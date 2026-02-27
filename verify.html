@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Verify Mode - BabyPredict</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f0427c",
+                        "secondary": "#42a5f5",
+                        "background-light": "#fefefe",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1.25rem",
+                        "lg": "2rem",
+                        "xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fefefe;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .app-container {
+            max-width: 450px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 font-display text-slate-900">
+    <div class="app-container flex flex-col min-h-screen">
+
+        <!-- App Header -->
+        <header
+            class="sticky top-0 z-50 glass-nav px-6 py-5 flex items-center justify-between border-b border-slate-100/50">
+            <div class="flex items-center gap-4">
+                <a href="index.html"
+                    class="size-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 active:scale-90 transition-transform">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <h1 class="text-lg font-extrabold tracking-tight leading-none">Verify Mode</h1>
+            </div>
+            <div class="size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-sm font-bold">verified</span>
+            </div>
+        </header>
+
+        <!-- Main Form Area -->
+        <main class="flex-1 px-6 pt-8 pb-40 space-y-8">
+
+            <!-- Hero Description -->
+            <div class="space-y-2">
+                <h2 class="text-3xl font-black tracking-tight leading-tight">Verification Center</h2>
+                <p class="text-slate-400 font-bold text-xs uppercase tracking-widest leading-relaxed">
+                    Test the accuracy of the stars. Enter the birthdays of your family to unveil the truth.
+                </p>
+            </div>
+
+            <!-- Verification Form -->
+            <div class="space-y-6">
+
+                <!-- Father's Birthday -->
+                <div class="space-y-2 group">
+                    <label
+                        class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 ml-1">
+                        <span class="material-symbols-outlined text-sm text-primary">man</span>
+                        Father's Birthday
+                    </label>
+                    <div class="relative">
+                        <input id="fatherBirth" type="date" min="1950-01-01" max="2010-12-31"
+                            class="w-full h-16 px-6 bg-slate-50 border-none rounded-3xl focus:ring-4 focus:ring-primary/10 font-bold text-slate-800 transition-all cursor-pointer" />
+                        <span
+                            class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">calendar_today</span>
+                    </div>
+                </div>
+
+                <!-- Mother's Birthday -->
+                <div class="space-y-2 group">
+                    <label
+                        class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 ml-1">
+                        <span class="material-symbols-outlined text-sm text-primary">woman</span>
+                        Mother's Birthday
+                    </label>
+                    <div class="relative">
+                        <input id="motherBirth" type="date" min="1950-01-01" max="2010-12-31"
+                            class="w-full h-16 px-6 bg-slate-50 border-none rounded-3xl focus:ring-4 focus:ring-primary/10 font-bold text-slate-800 transition-all cursor-pointer" />
+                        <span
+                            class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">calendar_today</span>
+                    </div>
+                </div>
+
+                <!-- Child's Birthday -->
+                <div class="space-y-2 group">
+                    <label
+                        class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 ml-1">
+                        <span class="material-symbols-outlined text-sm text-primary">child_care</span>
+                        Child's Birthday
+                    </label>
+                    <div class="relative">
+                        <input id="childBirth" type="date" min="1950-01-01" max="2025-12-31"
+                            class="w-full h-16 px-6 bg-slate-50 border-none rounded-3xl focus:ring-4 focus:ring-primary/10 font-bold text-slate-800 transition-all cursor-pointer" />
+                        <span
+                            class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">calendar_today</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Security Badge -->
+            <div class="flex items-center gap-4 p-5 bg-slate-50 rounded-[2rem] border border-slate-100 mt-10">
+                <div class="size-12 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm">
+                    <span class="material-symbols-outlined">security</span>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-800">Bank-Grade Privacy</h4>
+                    <p class="text-[10px] font-bold text-slate-400 mt-0.5">Your data remains encrypted and private.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Sticky Bottom Button -->
+        <div class="fixed bottom-10 left-6 right-6 max-w-[402px] mx-auto z-40">
+            <button onclick="handleVerify()"
+                class="w-full h-18 bg-slate-900 hover:bg-black text-white font-extrabold text-lg rounded-[2.5rem] shadow-2xl transition-all shadow-slate-900/40 flex items-center justify-center gap-3 active:scale-95 py-5 leading-none">
+                <span>Start Verification</span>
+                <span class="material-symbols-outlined">verified</span>
+            </button>
+        </div>
+
+        <!-- Global Decorative Blur -->
+        <div class="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none overflow-hidden">
+            <div class="absolute -top-1/4 -right-1/4 size-[500px] bg-primary/5 blur-[120px] rounded-full"></div>
+            <div class="absolute -bottom-1/4 -left-1/4 size-[500px] bg-secondary/5 blur-[120px] rounded-full"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function calculateAgeAtDate(birthDateString, atDateString) {
+            const birthDate = new Date(birthDateString);
+            const atDate = new Date(atDateString);
+            let age = atDate.getFullYear() - birthDate.getFullYear();
+            const m = atDate.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && atDate.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        function handleVerify() {
+            const fBirth = document.getElementById('fatherBirth').value;
+            const mBirth = document.getElementById('motherBirth').value;
+            const cBirth = document.getElementById('childBirth').value;
+            if (!fBirth || !mBirth || !cBirth) {
+                alert('Please fill in all birthdays!');
+                return;
+            }
+            const fAge = calculateAgeAtDate(fBirth, cBirth);
+            const mAge = calculateAgeAtDate(mBirth, cBirth);
+            const birthDate = new Date(cBirth);
+            const birthMonth = birthDate.getMonth();
+
+            let predictedRes;
+            if (birthMonth >= 10) {
+                predictedRes = Math.floor((fAge + mAge + 4) % 3);
+            } else {
+                predictedRes = Math.floor((fAge + mAge + 2) % 3);
+            }
+            window.location.href = `result.html?res=${predictedRes}&verify=true`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Reveal Result - BabyPredict</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f0427c",
+                        "secondary": "#42a5f5",
+                        "background-light": "#fefefe",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1.25rem",
+                        "lg": "2rem",
+                        "xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fefefe;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .app-container {
+            max-width: 450px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .reveal-glow {
+            filter: drop-shadow(0 0 30px rgba(240, 66, 124, 0.3));
+        }
+
+        @keyframes scan {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        .scanner-line {
+            animation: scan 2s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 dark:bg-black font-display text-slate-900 dark:text-slate-100">
+    <div class="app-container flex flex-col min-h-screen">
+
+        <!-- App Header -->
+        <header
+            class="sticky top-0 z-50 glass-nav px-6 py-5 flex items-center justify-between border-b border-slate-100/50">
+            <div class="flex items-center gap-4">
+                <a href="predict.html"
+                    class="size-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 active:scale-90 transition-transform">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <h1 class="text-lg font-extrabold tracking-tight leading-none">Result</h1>
+            </div>
+            <div class="size-10 flex items-center justify-center">
+                <!-- Share button removed for simplicity -->
+            </div>
+        </header>
+
+        <!-- Main Content Reveal -->
+        <main class="flex-1 flex flex-col items-center justify-center px-6 pt-4 pb-40 text-center relative">
+
+            <!-- Confetti / Floating Elements Background -->
+            <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                <div class="absolute top-1/4 left-1/4 size-2 bg-primary/20 rounded-full"></div>
+                <div class="absolute top-1/3 right-1/4 size-3 bg-secondary/20 rounded-full"></div>
+                <div class="absolute bottom-1/4 left-1/3 size-2 bg-yellow-400/20 rounded-full"></div>
+            </div>
+
+            <!-- Result Avatar Container -->
+            <div class="relative z-10 mb-10 group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[3rem] blur-2xl group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div
+                    class="relative size-72 bg-white rounded-[3.5rem] border-[12px] border-white shadow-2xl overflow-hidden flex items-center justify-center p-6 reveal-glow">
+                    <img id="resultImage" src="" alt="Baby Result" class="w-full h-full object-contain" />
+                    <!-- Subtle Scanner Effect -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent h-1 w-full scanner-line pointer-events-none">
+                    </div>
+                </div>
+                <!-- Floating Decorative Icons -->
+                <div
+                    class="absolute -top-4 -right-2 size-12 bg-white rounded-full shadow-lg flex items-center justify-center text-yellow-400 border-4 border-slate-50">
+                    <span id="floatingIcon" class="material-symbols-outlined fill-1">star</span>
+                </div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="relative z-10 space-y-4">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest mb-2">
+                    Reveal Success
+                </div>
+                <h2 id="resultTitle" class="text-5xl font-black tracking-tighter leading-none mb-1">
+                    It's a <span class="text-primary">Prince!</span>
+                </h2>
+                <p id="resultDesc"
+                    class="text-slate-400 font-bold text-sm max-w-[280px] mx-auto leading-relaxed uppercase tracking-wide">
+                    The stars have spoken. Your bundle of joy is almost here!
+                </p>
+            </div>
+
+        </main>
+
+        <!-- Dynamic Bottom Actions -->
+        <div class="fixed bottom-10 left-6 right-6 max-w-[402px] mx-auto z-50 space-y-4">
+
+            <!-- Standard Actions -->
+            <div id="standardActions" class="space-y-4">
+                <a href="index.html"
+                    class="w-full h-18 bg-primary hover:bg-primary/90 text-white font-extrabold text-lg rounded-3xl shadow-2xl shadow-primary/30 py-5 transition-all active:scale-95 flex items-center justify-center gap-3">
+                    <span>Back Home</span>
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+            </div>
+
+            <!-- Verify Actions (Hidden by default) -->
+            <div id="verifyActions"
+                class="hidden flex flex-col items-center bg-white/90 backdrop-blur-md rounded-[2.5rem] p-6 border border-slate-100 shadow-2xl space-y-4">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Was this accurate?</p>
+                <div class="flex gap-4 w-full">
+                    <button onclick="handleFeedback(true)"
+                        class="flex-1 h-16 bg-green-500 hover:bg-green-600 text-white font-black rounded-2xl shadow-xl shadow-green-200 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        YES
+                    </button>
+                    <button onclick="handleFeedback(false)"
+                        class="flex-1 h-16 bg-slate-900 hover:bg-black text-white font-black rounded-2xl shadow-xl shadow-slate-200 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">cancel</span>
+                        NO
+                    </button>
+                </div>
+                <div id="feedbackMessage" class="hidden text-center animate-bounce">
+                    <p class="text-xs font-bold text-primary uppercase tracking-widest">Thanks for verifying!</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Global Decorative Blur -->
+        <div class="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none overflow-hidden">
+            <div class="absolute -top-1/4 -right-1/4 size-[500px] bg-primary/5 blur-[120px] rounded-full"></div>
+            <div class="absolute -bottom-1/4 -left-1/4 size-[500px] bg-secondary/5 blur-[120px] rounded-full"></div>
+        </div>
+
+    </div>
+
+    <script>
+        const results = {
+            '0': {
+                title: 'It\'s a <span class="text-pink-500 tracking-normal">Princess!</span>',
+                desc: 'A beautiful girl is on her way to light up your world.',
+                image: 'assets/princess_baby.png',
+                icon: 'auto_awesome',
+                iconColor: 'text-pink-400'
+            },
+            '1': {
+                title: 'It\'s a <span class="text-primary tracking-normal">Prince!</span>',
+                desc: 'The stars have alignment. Your little boy is ready for adventure!',
+                image: 'assets/prince_baby.png',
+                icon: 'star',
+                iconColor: 'text-yellow-400'
+            },
+            '2': {
+                title: 'It\'s <span class="text-slate-500 italic text-3xl">Uncertain</span>',
+                desc: 'The universe is keeping this secret for now. It\'s a 50/50 gift!',
+                image: 'https://api.dicebear.com/9.x/bottts-neutral/svg?seed=Mystery&backgroundColor=f1f5f9&scale=110',
+                icon: 'help',
+                iconColor: 'text-slate-400'
+            }
+        };
+
+        function handleFeedback(isCorrect) {
+            const actions = document.getElementById('verifyActions');
+            const buttons = actions.querySelector('.flex.gap-4');
+            const msg = document.getElementById('feedbackMessage');
+            buttons.classList.add('hidden');
+            msg.classList.remove('hidden');
+            setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const resId = urlParams.get('res') || '1';
+            const isVerify = urlParams.get('verify') === 'true';
+            const data = results[resId] || results['1'];
+
+            document.getElementById('resultTitle').innerHTML = data.title;
+            document.getElementById('resultDesc').textContent = data.desc;
+            document.getElementById('resultImage').src = data.image;
+
+            const floatingIcon = document.getElementById('floatingIcon');
+            floatingIcon.textContent = data.icon;
+            floatingIcon.className = `material-symbols-outlined fill-1 ${data.iconColor}`;
+
+            if (isVerify) {
+                document.getElementById('standardActions').classList.add('hidden');
+                document.getElementById('verifyActions').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>

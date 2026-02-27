@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Baby Gender Predictor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f0427c",
+                        "secondary": "#42a5f5",
+                        "background-light": "#fefefe",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1.25rem",
+                        "lg": "2rem",
+                        "xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fefefe;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .app-container {
+            max-width: 450px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 20%, rgba(240, 66, 124, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(66, 165, 245, 0.1) 0%, transparent 50%);
+        }
+
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 dark:bg-black font-display text-slate-900 dark:text-slate-100">
+    <div class="app-container flex flex-col min-h-screen hero-gradient">
+
+        <!-- App Header -->
+        <header
+            class="sticky top-0 z-50 glass-nav px-6 py-5 flex items-center justify-between border-b border-slate-100/50">
+            <div class="flex items-center gap-2">
+                <div class="size-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/25">
+                    <span class="material-symbols-outlined text-white text-2xl">child_care</span>
+                </div>
+                <div>
+                    <h1 class="text-base font-extrabold tracking-tight leading-none">BabyPredict</h1>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">Vocalize Joy</p>
+                </div>
+            </div>
+            <button
+                class="size-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 active:scale-90 transition-transform">
+                <span class="material-symbols-outlined">menu_open</span>
+            </button>
+        </header>
+
+        <!-- Main Content Scroll Area -->
+        <main class="flex-1 px-6 pt-10 pb-32 overflow-y-auto">
+
+            <!-- Hero Welcome -->
+            <section class="mb-12 text-center flex flex-col items-center">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider mb-4 animate-bounce">
+                    ✨ Spark Your Curiosity
+                </div>
+                <h2
+                    class="text-4xl font-extrabold leading-[1.1] tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-800 to-primary/80">
+                    Boy or Girl?<br />Let's Find Out!
+                </h2>
+                <p class="text-slate-500 font-medium leading-relaxed max-w-[280px]">
+                    Predict your future bundle of joy or verify our accuracy with your current little stars.
+                </p>
+            </section>
+
+            <!-- Mode Selector -->
+            <div class="grid grid-cols-1 gap-5">
+
+                <!-- Predict Card -->
+                <a href="predict.html"
+                    class="group relative block p-1 bg-gradient-to-br from-primary to-primary/40 rounded-[2rem] shadow-2xl shadow-primary/20 active:scale-[0.98] transition-transform">
+                    <div class="bg-white rounded-[1.8rem] p-6 flex items-center gap-5">
+                        <div
+                            class="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-4xl fill-1">toys</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-extrabold text-xl mb-1">Predict Mode</h3>
+                            <p class="text-slate-400 text-xs font-semibold">Future baby reveal</p>
+                        </div>
+                        <div
+                            class="size-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-300">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Verify Card -->
+                <a href="verify.html"
+                    class="group block p-1 bg-slate-100 rounded-[2rem] active:scale-[0.98] transition-transform">
+                    <div class="bg-white rounded-[1.8rem] p-6 flex items-center gap-5">
+                        <div
+                            class="size-16 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-4xl">travel_explore</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-extrabold text-xl mb-1 text-slate-800">Verify Mode</h3>
+                            <p class="text-slate-400 text-xs font-semibold">Test our accuracy</p>
+                        </div>
+                        <div
+                            class="size-10 rounded-full border border-slate-100 flex items-center justify-center text-slate-300">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Promotion / Stats Section -->
+            <div
+                class="mt-12 bg-gradient-to-br from-primary/20 to-secondary/5 rounded-[2.5rem] p-8 border border-primary/10 relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://api.dicebear.com/9.x/lorelei/svg?seed=1"
+                                class="size-6 rounded-full border-2 border-white bg-pink-100 shadow-sm" />
+                            <img src="https://api.dicebear.com/9.x/lorelei/svg?seed=2"
+                                class="size-6 rounded-full border-2 border-white bg-blue-100 shadow-sm" />
+                            <img src="https://api.dicebear.com/9.x/lorelei/svg?seed=3"
+                                class="size-6 rounded-full border-2 border-white bg-yellow-100 shadow-sm" />
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-bold tracking-wider uppercase">Join 10k+
+                            Parents</span>
+                    </div>
+                    <h4 class="text-slate-900 font-extrabold text-xl mb-2 leading-tight">The most fun way to guess!</h4>
+                    <p class="text-slate-500 text-xs font-medium leading-relaxed mb-1">Our community loves sharing
+                        results. Start
+                        your journey today.</p>
+                </div>
+                <!-- Abstract Deco -->
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full translate-x-10 -translate-y-10">
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Global Decorative Blur -->
+        <div class="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none overflow-hidden">
+            <div class="absolute -top-1/4 -right-1/4 size-[500px] bg-primary/5 blur-[120px] rounded-full"></div>
+            <div class="absolute -bottom-1/4 -left-1/4 size-[500px] bg-secondary/5 blur-[120px] rounded-full"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

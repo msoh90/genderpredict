@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Predict Mode - BabyPredict</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f0427c",
+                        "secondary": "#42a5f5",
+                        "background-light": "#fefefe",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1.25rem",
+                        "lg": "2rem",
+                        "xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fefefe;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .app-container {
+            max-width: 450px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            bottom: 0;
+            color: transparent;
+            cursor: pointer;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 dark:bg-black font-display text-slate-900 dark:text-slate-100">
+    <div class="app-container flex flex-col min-h-screen">
+
+        <!-- App Header -->
+        <header
+            class="sticky top-0 z-50 glass-nav px-6 py-5 flex items-center justify-between border-b border-slate-100/50">
+            <div class="flex items-center gap-4">
+                <a href="index.html"
+                    class="size-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 active:scale-90 transition-transform">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </a>
+                <h1 class="text-lg font-extrabold tracking-tight leading-none">Prediction</h1>
+            </div>
+            <div class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-[12px] text-primary">child_care</span>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-primary/60">Predict Mode</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 px-6 pt-8 pb-32">
+
+            <!-- Hero Illustration Placeholder -->
+            <div
+                class="mb-10 p-8 rounded-[2.5rem] bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/5 flex flex-col items-center justify-center text-center">
+                <div
+                    class="size-20 bg-white rounded-full flex items-center justify-center shadow-xl shadow-primary/10 mb-4 animate-bounce">
+                    <span class="material-symbols-outlined text-primary text-4xl fill-1">magic_button</span>
+                </div>
+                <h2 class="text-xl font-extrabold leading-tight mb-2">Magic Calculation</h2>
+                <p class="text-slate-400 text-xs font-semibold px-4">Enter the details of the parents to weave the
+                    future's tail.</p>
+            </div>
+
+            <!-- Form Section -->
+            <div class="space-y-6">
+                <!-- Father's Birthday -->
+                <div class="space-y-2">
+                    <label
+                        class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                        <span class="material-symbols-outlined text-secondary text-base">man</span>
+                        Father's Birthday
+                    </label>
+                    <div class="relative group">
+                        <input id="fatherBirth"
+                            class="w-full h-16 bg-slate-50 border-2 border-transparent focus:border-primary/20 focus:bg-white rounded-3xl px-6 text-slate-900 font-bold transition-all outline-none appearance-none"
+                            placeholder="Select date" type="date" min="1950-01-01" max="2010-12-31" />
+                        <span
+                            class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">calendar_today</span>
+                    </div>
+                </div>
+
+                <!-- Mother's Birthday -->
+                <div class="space-y-2">
+                    <label
+                        class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                        <span class="material-symbols-outlined text-primary text-base">woman</span>
+                        Mother's Birthday
+                    </label>
+                    <div class="relative group">
+                        <input id="motherBirth"
+                            class="w-full h-16 bg-slate-50 border-2 border-transparent focus:border-primary/20 focus:bg-white rounded-3xl px-6 text-slate-900 font-bold transition-all outline-none appearance-none"
+                            placeholder="Select date" type="date" min="1950-01-01" max="2010-12-31" />
+                        <span
+                            class="material-symbols-outlined absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">calendar_today</span>
+                    </div>
+                </div>
+
+                <!-- Conception Details (Updated) -->
+                <div class="space-y-4">
+                    <label
+                        class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                        <span class="material-symbols-outlined text-pink-400 text-base">favorite</span>
+                        Month & Year of Conception
+                    </label>
+                    <div class="flex gap-4">
+                        <!-- Year Selection -->
+                        <div class="flex-1 relative group">
+                            <select id="conceptionYear"
+                                class="w-full h-16 bg-slate-50 border-2 border-transparent focus:border-primary/20 focus:bg-white rounded-3xl px-6 text-slate-900 font-bold transition-all outline-none appearance-none cursor-pointer pr-12">
+                                <option value="" disabled selected>Year</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                                <option value="2034">2034</option>
+                                <option value="2035">2035</option>
+                                <option value="2036">2036</option>
+                                <option value="2037">2037</option>
+                                <option value="2038">2038</option>
+                                <option value="2039">2039</option>
+                                <option value="2040">2040</option>
+                                <option value="2041">2041</option>
+                                <option value="2042">2042</option>
+                                <option value="2043">2043</option>
+                                <option value="2044">2044</option>
+                                <option value="2045">2045</option>
+                                <option value="2046">2046</option>
+                                <option value="2047">2047</option>
+                                <option value="2048">2048</option>
+                                <option value="2049">2049</option>
+                                <option value="2050">2050</option>
+                            </select>
+                            <span
+                                class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">expand_more</span>
+                        </div>
+                        <!-- Month Selection -->
+                        <div class="flex-1 relative group">
+                            <select id="conceptionMonth"
+                                class="w-full h-16 bg-slate-50 border-2 border-transparent focus:border-primary/20 focus:bg-white rounded-3xl px-6 text-slate-900 font-bold transition-all outline-none appearance-none cursor-pointer pr-12">
+                                <option value="" disabled selected>Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <span
+                                class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">expand_more</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="mt-8 px-6 text-center">
+                <p class="text-[10px] text-slate-300 font-bold leading-relaxed uppercase tracking-widest">
+                    * This tool is for fun and should be used for entertainment purposes only.
+                </p>
+            </div>
+        </main>
+
+        <!-- Sticky Bottom Button -->
+        <div class="fixed bottom-10 left-6 right-6 max-w-[402px] mx-auto z-40">
+            <button onclick="calculatePrediction()"
+                class="w-full h-18 bg-slate-900 hover:bg-black text-white font-extrabold text-lg rounded-[2.5rem] shadow-2xl transition-all shadow-slate-900/40 flex items-center justify-center gap-3 active:scale-95 py-5 leading-none">
+                <span>Predict Results</span>
+                <span class="material-symbols-outlined">auto_fix_high</span>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        function calculateAgeAtConception(birthDateString, conceptionYear, conceptionMonth) {
+            if (!birthDateString || !conceptionYear || !conceptionMonth) return 0;
+            const birthDate = new Date(birthDateString);
+            // We'll assume the 15th of the month for calculation
+            const concDate = new Date(conceptionYear, conceptionMonth - 1, 15);
+
+            let age = concDate.getFullYear() - birthDate.getFullYear();
+            const m = concDate.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && concDate.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        function calculatePrediction() {
+            const fBirth = document.getElementById('fatherBirth').value;
+            const mBirth = document.getElementById('motherBirth').value;
+            const cYear = document.getElementById('conceptionYear').value;
+            const cMonth = document.getElementById('conceptionMonth').value;
+
+            if (!fBirth || !mBirth || !cYear || !cMonth) {
+                alert('Please fill in all details!');
+                return;
+            }
+
+            // Calculate parents' ages AT the time of conception for better formula weight
+            const fAge = calculateAgeAtConception(fBirth, cYear, cMonth);
+            const mAge = calculateAgeAtConception(mBirth, cYear, cMonth);
+
+            // Logic Adjustment: Use Conception Month in formula (similar to verify mode)
+            let result;
+            if (parseInt(cMonth) >= 11) { // Late months adjustment
+                result = (fAge + mAge + 4) % 3;
+            } else {
+                result = (fAge + mAge + 2) % 3;
+            }
+
+            window.location.href = `result.html?res=${result}`;
+        }
+    </script>
+</body>
+
+</html>
